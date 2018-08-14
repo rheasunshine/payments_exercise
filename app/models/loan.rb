@@ -6,4 +6,8 @@ class Loan < ActiveRecord::Base
   def balance
     funded_amount - payments.sum(&:amount)
   end
+
+  def as_json(options={})
+    super(methods: [:balance])
+  end
 end
